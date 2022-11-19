@@ -1,0 +1,5 @@
+server.ssl.key-store= ecikeystore.p12
+server.ssl.key-store-password=ecikeystore
+server.ssl.key-store-type=pkcs12
+server.ssl.key-alias=ecikeypair
+server.ssl.key-password=ecikeystore
