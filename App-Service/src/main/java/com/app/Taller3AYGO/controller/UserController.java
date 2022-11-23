@@ -5,19 +5,22 @@ import com.app.Taller3AYGO.dto.UserDto;
 import com.app.Taller3AYGO.service.api.IUserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.session.SessionRegistry;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping(RestEndpoint.USERS)
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "https://localhost:3000")
 public class UserController {
 
     private IUserService userService;
+    private SessionRegistry sessionRegistry;
 
-    public UserController(IUserService userService){
+    public UserController(IUserService userService, SessionRegistry sessionRegistry){
         this.userService = userService;
+        this.sessionRegistry = sessionRegistry;
     }
 
     @PostMapping
@@ -48,6 +51,12 @@ public class UserController {
         } catch (Exception e){
             return new ResponseEntity<>("There was a problem getting the users", HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+    @GetMapping("/logged")
+    public Integer getLoggedUsers() {
+        List<Object> allPrincipals = sessionRegistry.getAllPrincipals();
+        return allPrincipals.size();
     }
 
     @DeleteMapping("/{userName}")

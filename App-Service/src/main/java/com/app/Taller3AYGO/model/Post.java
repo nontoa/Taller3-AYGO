@@ -1,4 +1,4 @@
-package com.app.Taller3AYGO.dto;
+package com.app.Taller3AYGO.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,7 +11,7 @@ import java.util.Date;
 @AllArgsConstructor
 @Data
 @Builder
-public class PostDto {
+public class Post {
 
     private String message;
     private String owner;

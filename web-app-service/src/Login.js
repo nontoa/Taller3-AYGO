@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { Formik, Form, Field } from 'formik';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
 
     const [formSentFailed, changeFormSentFailed] = useState(false);
+    const navigate = useNavigate();
 
     return (
         <>
@@ -30,8 +32,10 @@ const Login = () => {
                         userName: values.userName,
                         password: values.password
                     })
-                    .then((response) => {                    
-                        console.log(response)
+                    .then((response) => {                                        
+                        localStorage.setItem('token', response.headers.get("Authorization"));                       
+                        localStorage.setItem('userName', values.userName);
+                        navigate('/home');
                     }, (error) => {                
                         changeFormSentFailed(true);
                         setTimeout(() => changeFormSentFailed(false), 5000);
@@ -65,7 +69,9 @@ const Login = () => {
                         </div>
 
                         <button type="submit">Login</button>
-                        <a href="/Register">User register</a>
+                        <div className='info'>
+                            <a href="/Register">User register</a>
+                        </div>                    
                         {formSentFailed && <p className="falla">Invalid credentials</p>}
                     </Form>
                 )}

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Formik, Form, Field } from 'formik';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-//import https from 'https';
 
 const RegistryForm = () => {
 
@@ -38,25 +37,6 @@ const RegistryForm = () => {
                     return errors;
                 }}
                 onSubmit={(values, { resetForm }) => {
-                    /*var agent = new https.Agent({
-                        rejectUnauthorized: false
-                    });
-                    console.log(agent);
-                    axios.post('https://localhost:8585/users', { httpsAgent: agent }, {
-                        name: values.name,
-                        email: values.email,
-                        userName: values.userName,
-                        password: values.password
-                    })
-                        .then((response) => {
-                            console.log(response);
-                            changeFormSentSuccessfully(true);
-                            setTimeout(() => changeFormSentSuccessfully(false), 5000);
-                        }, (error) => {
-                            console.log(error);
-                            changeFormSentFailed(true);
-                            setTimeout(() => changeFormSentFailed(false), 5000);
-                        }); */   
                     axios.post('http://localhost:8585/users', {
                         name: values.name,
                         email: values.email,
@@ -120,8 +100,10 @@ const RegistryForm = () => {
                             {touched.password && errors.password && <div className="error">{errors.password} </div>}
                         </div>
 
-                        <button type="submit">Save</button>                    
-                        <a href="/login">Login</a>
+                        <button type="submit">Save</button>      
+                        <div className='info'>
+                            <a href="/login">Login</a>
+                        </div>                                      
                         {formSentSuccessfully && <p className="exito">User created</p>}
                         {formSentFailed && <p className="falla">User cannot be created</p>}
                     </Form>

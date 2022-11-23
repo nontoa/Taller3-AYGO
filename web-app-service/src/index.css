@@ -88,6 +88,26 @@ body {
 	color: #02a802;
 }
 
+.formulario .username {
+	text-align: center;
+	font-size: 24px;
+	padding-top: 20px;
+	color: #696969;
+}
+
+.formulario .activeUsers {
+	text-align: center;
+	font-size: 18px;
+	padding-top: 20px;
+	color: darkblue;
+}
+
+.tittle {
+	text-align: center;
+	font-size: 30px;
+	padding-top: 20px;
+}
+
 .formulario .falla {
 	text-align: center;
 	font-size: 14px;
@@ -97,8 +117,7 @@ body {
 
 .formulario .info {
 	text-align: center;
-	font-size: 14px;
-	padding-top: 20px;
+	font-size: 16px;
 	color: blue;
 }
 
