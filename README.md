@@ -1,4 +1,4 @@
-# Taller3-AYGO
+# Workshop3-AYGO
 
 In the laboratory was implemented a simple web application with the following features:
 
